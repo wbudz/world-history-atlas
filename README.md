@@ -55,7 +55,7 @@ In general, sources are listed along with project data in QGIS project files and
 
 ## License
 
-Original project content is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)**. See [LICENSE.md](LICENSE.md).
+Original project content is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)**. See [LICENSE.txt](LICENSE.txt).
 
 Third-party basemaps, datasets, fonts, icons, photographs, and artwork remain subject to their own licenses. Details about license terms of used content are listed along with references to sources, in a way to sufficiently satisfy licensing conditions. See each map's source notes for details.
 
