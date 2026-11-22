@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Fit Frame to Text</name>
+  <id>user.history_atlas.fit_frame_to_text</id>
+
+  <param name="margin" type="float" min="0" max="1000" precision="2" gui-text="Margin">5.0</param>
+  <param name="unit" type="optiongroup" appearance="combo" gui-text="Margin unit">
+    <option value="mm">mm</option>
+    <option value="px">px</option>
+    <option value="pt">pt</option>
+    <option value="cm">cm</option>
+    <option value="in">in</option>
+  </param>
+
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu name="History Atlas"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command location="inx" interpreter="python">fit_frame_to_text.py</command>
+  </script>
+</inkscape-extension>

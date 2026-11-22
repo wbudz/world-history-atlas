@@ -1,0 +1,1 @@
+Copy inx and py to ~/.var/app/org.inkscape.Inkscape/config/inkscape/extensions.

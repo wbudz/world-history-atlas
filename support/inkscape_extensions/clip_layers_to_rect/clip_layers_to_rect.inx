@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Clip Layers to Rectangles</name>
+  <id>user.history_atlas.clip_layers_to_rect</id>
+
+  <param name="wrap" type="bool" gui-text="Clip all groups together (wrap them in one group)">false</param>
+
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu name="History Atlas"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command location="inx" interpreter="python">clip_layers_to_rect.py</command>
+  </script>
+
+</inkscape-extension>

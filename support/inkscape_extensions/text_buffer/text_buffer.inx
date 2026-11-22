@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <name>Set Text Buffer (Stroke)</name>
+  <id>user.history_atlas.text_buffer</id>
+
+  <param name="stroke_color" type="color" appearance="colorbutton" gui-text="Stroke color:">4294967295</param>
+  <param name="stroke_width" type="float" min="0" max="1000" precision="3" gui-text="Stroke width:">0.3</param>
+  <param name="unit" type="optiongroup" appearance="combo" gui-text="Width unit:">
+    <option value="mm">mm</option>
+    <option value="px">px</option>
+    <option value="pt">pt</option>
+    <option value="in">in</option>
+    <option value="cm">cm</option>
+  </param>
+  <param name="paint_order" type="optiongroup" appearance="combo" gui-text="Paint order:">
+    <option value="markers stroke fill">Markers, Stroke, Fill</option>
+    <option value="stroke markers fill">Stroke, Markers, Fill</option>
+    <option value="stroke fill markers">Stroke, Fill, Markers</option>
+    <option value="markers fill stroke">Markers, Fill, Stroke</option>
+    <option value="fill markers stroke">Fill, Markers, Stroke</option>
+    <option value="fill stroke markers">Fill, Stroke, Markers</option>
+  </param>
+  <param name="compensate" type="bool" gui-text="Compensate for transforms (keep the real stroke width)">true</param>
+
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu name="History Atlas"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command location="inx" interpreter="python">text_buffer.py</command>
+  </script>
+</inkscape-extension>
