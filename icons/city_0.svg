@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2mm" height="2mm" viewBox="0 0 2 2">
+    <circle cx="1" cy="1" r="0.5" fill="param(fill)" stroke="param(outline)" stroke-width="0.2" stroke-linecap="square" stroke-linejoin="bevel"/>
+</svg>
