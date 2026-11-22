@@ -3,3 +3,5 @@
 /support/sqlite/
 /src/
 /scratchpad.txt
+*.gpkg-shm
+*.gpkg-wal
