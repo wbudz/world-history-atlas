@@ -1,7 +1,14 @@
+# Project-wide directories and files:
 .vscode/
 /archive/
-/support/sqlite/
 /src/
+/scratchpad/
 /scratchpad.txt
+
+# Map-specific directories and files:
+src/
+output/
+export/
+extra/
 *.gpkg-shm
 *.gpkg-wal

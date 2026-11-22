@@ -34,8 +34,12 @@ def get_documents_dir() -> Path:
 
 def build_prefix_regex(atlas_dir: Path) -> re.Pattern:
     """Match the atlas dir with or without the /var prefix (Fedora Atomic/Kinoite
-    symlinks /home -> /var/home), plus the symlink-resolved variant, and capture
-    the rest of the path up to the next delimiter so it can be reported."""
+    symlinks /home -> /var/home), plus the symlink-resolved variant.
+
+    Group 1: optional leading "file://" qualifier.
+    Group 2: the rest of the path, up to the next delimiter (includes any
+             "?type=csv&..." query string used by delimited-text layers).
+    """
     variants = set()
     for p in (str(atlas_dir), os.path.realpath(atlas_dir)):
         if p.startswith("/var/home/"):
@@ -44,7 +48,19 @@ def build_prefix_regex(atlas_dir: Path) -> re.Pattern:
     alternatives = "|".join(re.escape(v) for v in sorted(variants, key=len, reverse=True))
     # The /var prefix must be part of the match, otherwise "/var" would be left
     # behind in front of "..".
-    return re.compile(rf"(?:/var)?(?:{alternatives})([^\"'<>|\n]*)")
+    return re.compile(rf"(file://)?(?:/var)?(?:{alternatives})([^\"'<>|\n]*)")
+
+
+def is_csv(rest: str) -> bool:
+    """True if the path (ignoring any ?query part) points to a .csv file."""
+    return rest.split("?", 1)[0].lower().endswith(".csv")
+
+
+def rewrite(m: re.Match) -> str:
+    qualifier, rest = m.group(1) or "", m.group(2)
+    if is_csv(rest):
+        qualifier = ""  # drop "file://" for CSV files
+    return qualifier + ".." + rest
 
 
 if len(sys.argv) != 2:
@@ -59,13 +75,14 @@ ABS_PREFIX = build_prefix_regex(atlas_dir)
 print(f"Documents folder: {documents_dir}")
 print(f"Atlas folder:     {atlas_dir}" + ("" if atlas_dir.is_dir() else "  (warning: does not exist)"))
 
-sanitized = Counter()
+sanitized = Counter()  # (old, new) -> count
 gps_removed = 0
 
 
 def record_path(m: re.Match) -> str:
-    sanitized[m.group(0)] += 1
-    return ".." + m.group(1)
+    new = rewrite(m)
+    sanitized[(m.group(0), new)] += 1
+    return new
 
 
 fd, tmp = tempfile.mkstemp(suffix=".qgz", dir=os.path.dirname(os.path.abspath(path)))
@@ -99,8 +116,7 @@ else:
 if sanitized:
     total = sum(sanitized.values())
     print(f"\n✔ Sanitized {total} absolute path occurrence(s) ({len(sanitized)} unique):")
-    for old, count in sorted(sanitized.items()):
-        new = ABS_PREFIX.sub(lambda m: ".." + m.group(1), old)
+    for (old, new), count in sorted(sanitized.items()):
         suffix = f"  (x{count})" if count > 1 else ""
         print(f"  {old}  ->  {new}{suffix}")
 else:
