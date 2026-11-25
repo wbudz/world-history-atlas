@@ -28,8 +28,8 @@ The following grading of historicity is currently used:
 
 * inconclusive: Existence is based on historical record but some important aspects like specific placement, borders, or other attributes (e.g. population) do not have definitive track record or cited values are contentious and there is no convincing agreement in available sources; also situations where some attribute is derived from available information. Example: placement of archeological cultures borders based only on existence of type sites.
 
-* Conjectural - Information is plausible but not based on specific historical records; this usually means data that awaits better research but may also apply to abstract information that is presented only to support larger narrative and improve clarity. Example: "nomadic peoples" label for area between known settled socities.
+* conjectural - Information is plausible but not based on specific historical records; this usually means data that awaits better research but may also apply to abstract information that is presented only to support larger narrative and improve clarity. Example: "nomadic peoples" label for area between known settled socities.
 
-* Fictitious - Regarded wholly or in large part non-historical; still included for its common recognition, or role in narration; this needs to be marked as non-historical on the map. Example: references to legendary early rulers.
+* fictitious - Regarded wholly or in large part non-historical; still included for its common recognition, or role in narration; this needs to be marked as non-historical on the map. Example: references to legendary early rulers.
 
 By its nature, categories are discretional, and may not be fully comparable between maps. They are meant only to give general guidance.
